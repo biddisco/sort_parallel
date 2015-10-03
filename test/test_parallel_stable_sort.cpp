@@ -20,6 +20,7 @@
 #include <vector>
 
 #include <algorithm>
+#include <random>
 
 using namespace std ;
 namespace bsort = boost::sort::parallel ;

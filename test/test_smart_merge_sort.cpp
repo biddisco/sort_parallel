@@ -19,6 +19,7 @@
 #include <boost/test/test_tools.hpp>
 #include <vector>
 #include <algorithm>
+#include <random>
 
 using boost::sort::parallel::algorithm::smart_merge_sort ;
 using boost::sort::parallel::algorithm::indirect_smart_merge_sort ;

@@ -20,6 +20,7 @@
 #include <vector>
 
 #include <algorithm>
+#include <random>
 
 namespace bs_algo = boost::sort::parallel::algorithm;
 namespace bs_util = boost::sort::parallel::util ;
