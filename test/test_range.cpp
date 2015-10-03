@@ -456,7 +456,7 @@ void prueba8(void)
     R[3] = {4,8,12,14,19,23,27,31} ;
 
     for ( uint32_t i =0 ; i < 4 ; ++i)
-    {   for ( uint32_t k =0 ; k < 10 ; ++k)
+    {   for ( uint32_t k =0 ; k < 8 ; ++k)
         {   R[i][k].tail = i ;
         };
     };
