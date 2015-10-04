@@ -129,7 +129,7 @@ void Generator (uint64_t N )
     bsp::util::uint64_file_generator gen ( "input.bin");
     vector<IA> Z ;
    	Z.reserve ( N);
-   	IA Aux(0);
+   	IA Aux;
 
     //------------------------ Inicio -----------------------------
     cout<<N<<" elements of size "<<sizeof (IA)<<" randomly filled \n";
