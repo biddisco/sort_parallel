@@ -14,6 +14,7 @@
 //-----------------------------------------------------------------------------
 #include <iostream>
 #include <vector>
+#include <random>
 
 #include <boost/sort/parallel/sort.hpp>
 

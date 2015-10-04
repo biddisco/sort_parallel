@@ -55,5 +55,6 @@ include_directories(
 # tests
 #------------------------------------------------------------------------------
 add_subdirectory(test)
+add_subdirectory(example)
 add_subdirectory(benchmark)
 
