@@ -24,7 +24,7 @@ int main( void )
 {   //-------------- begin------------
     std::mt19937_64 my_rand(0);
 
-    const uint32_t NMAX = 1000000 ;
+    const uint32_t NMAX = 100000 ;
     std::vector <uint64_t> A , B ;
     for ( uint32_t i =0 ; i < NMAX ; ++i)
         A.push_back( my_rand() );

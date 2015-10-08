@@ -151,7 +151,7 @@ class TimSort {
             diff_t runLen = countRunAndMakeAscending(cur, hi, c);
 
             if(runLen < minRun) {
-                diff_t const force  = std::min(nRemaining, minRun);
+                diff_t const force  = (std::min)(nRemaining, minRun);
                 binarySort(cur, cur + force, cur + runLen, c);
                 runLen = force;
             }
@@ -506,7 +506,7 @@ class TimSort {
             minGallop += 2;
         } // end of "outer" loop
 
-        minGallop_ = std::min(minGallop, 1);
+        minGallop_ = (std::min)(minGallop, 1);
 
         if(len1 == 1) {
             assert( len2 > 0 );
@@ -627,7 +627,7 @@ class TimSort {
             minGallop += 2;
         } // end of "outer" loop
 
-        minGallop_ = std::min(minGallop, 1);
+        minGallop_ = (std::min)(minGallop, 1);
 
         if(len2 == 1) {
             assert( len1 > 0 );

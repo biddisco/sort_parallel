@@ -44,7 +44,7 @@ void prueba1 ( void )
 {   //-----------------------------------------------------------------------
     //              test of move
     //------------------------------------------------------------------------
-    typedef typename std::vector<uint64_t>::iterator iter_t ;
+    typedef std::vector<uint64_t>::iterator iter_t ;
     typedef bs_util::range<iter_t>  range_t ;
 
     std::vector<uint64_t> A , B;
@@ -65,7 +65,7 @@ void prueba1 ( void )
         forensic ( uint64_t K = 0 ){ N = (int64_t)K ;};
         ~forensic () { N = -1 ;};
     };
-    typedef typename std::vector<forensic>::iterator fiter_t ;
+    typedef std::vector<forensic>::iterator fiter_t ;
     typedef bs_util::range<fiter_t>  frange_t ;
 
     char K[160];
@@ -307,7 +307,7 @@ void prueba6(void)
         };
     };
     std::vector<xk> R[4],Rout;
-    typedef typename std::vector<xk>::iterator iter_t ;
+    typedef  std::vector<xk>::iterator iter_t ;
     typedef  std::less<xk> Compare ;
     Compare Comp ;
 
@@ -440,7 +440,7 @@ void prueba8(void)
         {   return ( num < A.num);
         };
     };
-    typedef typename std::vector<xk>::iterator iter_t ;
+    typedef  std::vector<xk>::iterator iter_t ;
     typedef  std::less<xk> Compare ;
 
     std::vector<xk> R[4];

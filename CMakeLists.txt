@@ -38,7 +38,7 @@ find_package(Boost
   1.55
   REQUIRED
   COMPONENTS
-    regex date_time serialization
+    regex date_time serialization chrono atomic
     program_options filesystem log log_setup system thread
 )
 
@@ -85,6 +85,9 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
+if (WIN32)
+  add_definitions(/bigobj)
+endif()
 #------------------------------------------------------------------------------
 # tests
 #------------------------------------------------------------------------------

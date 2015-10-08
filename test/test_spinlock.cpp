@@ -59,7 +59,7 @@ int function1()
     //std::cout<<"2.-Begin function1 \n";
     N++ ;
     std::unique_lock<spinlock_t > ul(s);
-    BOOST_CHECK ( N == 5 or N == 7 );
+    BOOST_CHECK ( N == 5 || N == 7 );
     N++;
     //std::cout<<"4.-Inside function1 \n";
     std::this_thread::sleep_for(std::chrono::seconds(2));
@@ -72,7 +72,7 @@ int function2()
     //std::cout<<"2.-Begin function2 \n";
     N++ ;
     std::unique_lock<spinlock_t > ul(s);
-    BOOST_CHECK ( N == 5 or N == 7 );
+    BOOST_CHECK ( N == 5 || N == 7 );
     N++ ;
     //std::cout<<"4.-Inside function2 \n";
     std::this_thread::sleep_for(std::chrono::seconds(1));

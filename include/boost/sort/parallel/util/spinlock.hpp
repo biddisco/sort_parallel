@@ -63,7 +63,7 @@ explicit inline spinlock() NOEXCEPT{ af.clear(); };
 //---------------------------------------------------------------------------
 inline void lock() NOEXCEPT
 {   if ( af.test_and_set(std::memory_order_acquire))
-    {   while ( wait() and  af.test_and_set(std::memory_order_relaxed) );
+    {   while ( wait() && af.test_and_set(std::memory_order_relaxed) );
     };
 };
 //
@@ -73,10 +73,10 @@ inline void lock() NOEXCEPT
 /// @param [in]
 /// @return true :locked false: not previous locked
 //---------------------------------------------------------------------------
-inline bool wait () const NOEXCEPT
+inline bool wait() const NOEXCEPT
 {   std::this_thread::yield();
-    return true ;
-} ;
+  return true;
+};
 //
 //---------------------------------------------------------------------------
 //  function : try_lock
@@ -85,7 +85,7 @@ inline bool wait () const NOEXCEPT
 /// @return true :locked false: not previous locked
 //---------------------------------------------------------------------------
 inline bool try_lock() NOEXCEPT
-{   return not af.test_and_set(std::memory_order_acquire);
+{   return !af.test_and_set(std::memory_order_acquire);
 };
 //
 //---------------------------------------------------------------------------

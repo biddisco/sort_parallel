@@ -25,7 +25,7 @@
 namespace bs_algo = boost::sort::parallel::algorithm;
 namespace bs_util = boost::sort::parallel::util ;
 
-typedef typename std::vector<uint64_t>::iterator iter_t ;
+typedef std::vector<uint64_t>::iterator iter_t ;
 
 std::mt19937_64 my_rand(0);
 
@@ -165,7 +165,7 @@ void prueba6 ( void)
 
 void prueba7 ( void)
 {   //---------------------- begin ------------------------------------
-    typedef typename std::vector<uint64_t>::iterator iter_t ;
+    typedef std::vector<uint64_t>::iterator iter_t ;
     const uint32_t NELEM = 416667 ;
     //const uint32_t N1 = ( NELEM +1)/2 ;
     std::vector <uint64_t> A ;

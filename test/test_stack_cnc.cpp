@@ -111,12 +111,12 @@ void prueba ( void)
         BOOST_CHECK ( V1[i] == i );
     V1.clear() ;
     int z ;
-    BOOST_CHECK ( B.pop_copy_back( z) and z == 4 ) ;
+    BOOST_CHECK ( B.pop_copy_back( z) && z == 4 ) ;
     BOOST_CHECK ( B.pop_copy_back ( V1 , 2 ));
-    BOOST_CHECK ( V1.size() == 2 and V1[0] == 2 and V1[1] == 3);
+    BOOST_CHECK ( V1.size() == 2 && V1[0] == 2 && V1[1] == 3);
     BOOST_CHECK ( B.size() == 2 );
     B.pop_back() ;
     BOOST_CHECK ( B.size() == 1 );
     B.copy ( V1 );
-    BOOST_CHECK ( V1.size() == 1 and V1[0] == 0);
+    BOOST_CHECK ( V1.size() == 1 && V1[0] == 0);
 }

@@ -190,7 +190,7 @@ void prueba6 ( void)
 
 void prueba7 ( void)
 {   //---------------------- begin ------------------------------------
-    typedef typename std::vector<uint64_t>::iterator iter_t ;
+    typedef std::vector<uint64_t>::iterator iter_t ;
     const uint32_t NELEM = 416667 ;
     const uint32_t N1 = ( NELEM +1)/2 ;
     std::vector <uint64_t> A ;

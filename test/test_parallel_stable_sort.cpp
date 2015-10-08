@@ -26,7 +26,7 @@ using namespace std ;
 namespace bsort = boost::sort::parallel ;
 
 
-typedef typename std::vector<uint64_t>::iterator iter_t ;
+typedef std::vector<uint64_t>::iterator iter_t ;
 
 
 std::mt19937_64 my_rand(0);

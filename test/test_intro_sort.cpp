@@ -141,7 +141,7 @@ void test01( void)
 };
 void test02 ( void)
 {   //---------------------- begin ------------------------------------
-    typedef typename std::vector<uint64_t>::iterator iter_t ;
+    typedef std::vector<uint64_t>::iterator iter_t ;
     const uint32_t NELEM = 416667 ;
     std::vector <uint64_t> A ;
 
