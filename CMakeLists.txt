@@ -42,13 +42,20 @@ find_package(Boost
     program_options filesystem log log_setup system thread
 )
 
+#--------------------------------------------------
+# Find HPX
+#--------------------------------------------------
+find_package(HPX)
+if(HPX_FOUND)
+  set(SORT_HAS_HPX 1)
+endif()
+
 #------------------------------------------------------------------------------
 # include dirs
 #------------------------------------------------------------------------------
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/include
   ${Boost_INCLUDE_DIRS}
-#  ${CMAKE_CURRENT_SOURCE_DIR}/include/boost/sort/parallel
 )
 
 #------------------------------------------------------------------------------
