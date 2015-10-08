@@ -84,7 +84,19 @@ int Prueba_spreadsort  ( const std::vector <IA> & B );
 // we need a callback for the HPX runtime to call for this benchmark
 // as we start stop the HPX runtime for each test.
 #ifdef SORT_HAS_HPX
-std::function< int ( const std::vector <IA> & B )> hpx_function;
+template <class IA>
+int Prueba_hpx ( const std::vector <IA> & B );
+
+template <class IA>
+int hpx_test(const std::vector<IA> &A, int argc, char ** argv)
+{
+    int result = Prueba_hpx<IA>(A);
+    return hpx::finalize();
+}
+// we need these fo the init function
+int    hpx_argc = 0;
+char **hpx_argv = NULL;
+
 #endif
 
 int main (int argc, char *argv[] )
@@ -101,6 +113,11 @@ int main (int argc, char *argv[] )
     system ( "lscpu");
     std::cout.flush();
     cout<<"\n";
+
+#ifdef SORT_HAS_HPX
+    hpx_argc = argc;
+    hpx_argv = argv;
+#endif
 
     //------------------------------------------------------------------------
     // Execution with different object format
@@ -183,11 +200,6 @@ void Generator (uint64_t N )
 // when hpx::init() is called, the hpx_main function is called
 // we set a calback to the actual hpx test each time and call it from here
 #ifdef SORT_HAS_HPX
-int hpx_main(int argc, char ** argv)
-{
-    hpx_function()
-    return hpx::finalize();
-}
 
 template <class IA>
 int Prueba_hpx ( const std::vector <IA> & B )
@@ -301,8 +313,10 @@ int Prueba  ( const std::vector <IA> & B )
 
 #ifdef SORT_HAS_HPX
     A = B ;
-    hpx_function = std::bind(Prueba_hpx<IA>, A);
-    hpx::init((int)0, (char**)NULL);
+    using hpx::util::placeholders::_1;
+    using hpx::util::placeholders::_2;
+    hpx::util::function_nonser<int(int, char**)> callback = hpx::util::bind(&hpx_test<IA>, A, _1, _2);
+    hpx::init(callback, "dummyname", hpx_argc, hpx_argv, hpx::runtime_mode_default );
 #endif
     return 0 ;
 };
