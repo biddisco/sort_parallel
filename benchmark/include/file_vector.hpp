@@ -50,7 +50,7 @@ int generate_file ( const std::string& filename,size_t NElem )
     if (ofile.bad())
     {   throw std::ios_base::failure ("could not open file \n");
     };
-    std::mt19937_64 my_rand(0);
+    std::mt19937_64 my_rand(time(NULL));
     for ( size_t i =0 ; i < NElem ; ++i)
     {   uint64_t Aux = my_rand() ;
         ofile.write( (char *) &Aux, 8 );
