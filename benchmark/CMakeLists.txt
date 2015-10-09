@@ -37,3 +37,17 @@ if (SORT_HAS_HPX)
   hpx_setup_target(benchmark)
   target_link_libraries(benchmark)
 endif()
+
+#------------------------------------------------------------------------------
+# restart
+#------------------------------------------------------------------------------
+add_executable(
+  restart
+  restart.cpp
+)
+target_link_libraries(restart ${BENCHMARK_LIBRARIES})
+
+if (SORT_HAS_HPX)
+  hpx_setup_target(restart)
+  target_link_libraries(restart)
+endif()

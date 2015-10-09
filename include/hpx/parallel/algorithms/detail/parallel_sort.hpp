@@ -2,7 +2,7 @@
 /// @file parallel_sort.hpp
 /// @brief Parallel Sort algorithm
 ///
-/// @author Copyright (c) 2015 Francisco Jos�� Tapia (fjtapia@gmail.com )\n
+/// @author Copyright (c) 2015 Francisco Jos������ Tapia (fjtapia@gmail.com )\n
 ///         Distributed under the Boost Software License, Version 1.0.\n
 ///         ( See accompanyingfile LICENSE_1_0.txt or copy at
 ///           http://www.boost.org/LICENSE_1_0.txt  )
@@ -62,8 +62,6 @@ struct parallel_sort_comp
     /// @brief constructor
     /// @param [in] first : iterator to the first element to sort
     /// @param [in] last : iterator to the next element after the last
-    /// @param [in] NT : variable indicating the number of threads used in the
-    ///                  sorting
     /// @exception
     /// @return
     /// @remarks
@@ -78,8 +76,6 @@ struct parallel_sort_comp
     /// @param [in] first : iterator to the first element to sort
     /// @param [in] last : iterator to the next element after the last
     /// @param [in] comp : object for to compare
-    /// @param [in] NT : variable indicating the number of threads used in the
-    ///                  sorting
     /// @exception
     /// @return
     /// @remarks
@@ -190,7 +186,6 @@ struct parallel_sort_comp
             {
                 f1.get();
                 f2.get();
-                return;
             }, std::move(hk1), std::move(hk2)
         );
      }
@@ -202,8 +197,6 @@ struct parallel_sort_comp
 /// @tparam iter_t : iterator used for to access to the elements
 /// @param [in] first : iterator to the first element
 /// @param [in] last : iterator to the next element to the last valid iterator
-/// @param [in] NT : NThread object for to define the number of threads used
-///                  in the process. By default is the number of HW threads
 /// @exception
 /// @return
 /// @remarks
@@ -221,8 +214,6 @@ void parallel_sort ( iter_t first, iter_t last )
 /// @param [in] first : iterator to the first element
 /// @param [in] last : iterator to the next element to the last valid iterator
 /// @param [in] comp : object for to compare
-/// @param [in] NT : NThread object for to define the number of threads used
-///                  in the process. By default is the number of HW threads
 /// @exception
 /// @return
 /// @remarks
@@ -247,8 +238,6 @@ void parallel_sort ( iter_t first, iter_t last, compare comp1)
 /// @tparam iter_t : iterator used for to access to the elements
 /// @param [in] first : iterator to the first element
 /// @param [in] last : iterator to the next element to the last valid iterator
-/// @param [in] NT : NThread object for to define the number of threads used
-///                  in the process. By default is the number of HW threads
 /// @exception
 /// @return
 /// @remarks
@@ -273,8 +262,6 @@ void indirect_parallel_sort ( iter_t first, iter_t last )
 /// @param [in] first : iterator to the first element
 /// @param [in] last : iterator to the next element to the last valid iterator
 /// @param [in] comp : object for to compare
-/// @param [in] NT : NThread object for to define the number of threads used
-///                  in the process. By default is the number of HW threads
 /// @exception
 /// @return
 /// @remarks

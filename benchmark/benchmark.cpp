@@ -122,9 +122,9 @@ int main (int argc, char *argv[] )
     //------------------------------------------------------------------------
     // Execution with different object format
     //------------------------------------------------------------------------
-    Generator_sorted() ;
-    Generator_uint64() ;
-    Generator_string () ;
+//    Generator_sorted() ;
+//    Generator_uint64() ;
+//    Generator_string () ;
     Generator< int_array<1> >   ( NELEM   );
     Generator< int_array<2> >   ( NELEM>>1);
     Generator< int_array<4> >   ( NELEM>>2);
@@ -177,7 +177,6 @@ void Generator_string(void)
     cout<<std::endl ;
 };
 
-
 template <class IA>
 void Generator (uint64_t N )
 {   //------------------------------- begin ----------------------------------
@@ -214,7 +213,7 @@ int Prueba_hpx ( const std::vector <IA> & B )
     finish = now() ;
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
-    hpx::finalize();
+    return hpx::finalize();
 
 }
 #endif
@@ -226,7 +225,7 @@ int Prueba  ( const std::vector <IA> & B )
 	time_point start, finish;
 	std::vector <IA> A ( B);
     std::less<IA>  comp ;
-
+/*
 	A = B ;
     cout<<"std::sort                    : ";
     start= now() ;
@@ -310,7 +309,7 @@ int Prueba  ( const std::vector <IA> & B )
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
 #endif
-
+*/
 #ifdef SORT_HAS_HPX
     A = B ;
     using hpx::util::placeholders::_1;
@@ -320,6 +319,7 @@ int Prueba  ( const std::vector <IA> & B )
 #endif
     return 0 ;
 };
+
 template <class IA>
 int Prueba_spreadsort  ( const std::vector <IA> & B )
 {   //---------------------------- begin --------------------------------
