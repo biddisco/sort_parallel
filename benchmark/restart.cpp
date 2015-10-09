@@ -6,6 +6,8 @@
 #include <vector>
 #include <file_vector.hpp>
 
+#include <hpx/parallel/algorithms/sort.hpp>
+
 #include <hpx/hpx.hpp>
 #include <hpx/hpx_init.hpp>
 
@@ -17,7 +19,8 @@
 template <typename IA>
 void my_sort(const std::vector<IA> & B) {
   std::vector <IA> A (B);
-  std::sort(A.begin() , A.end());
+//  std::sort(A.begin() , A.end());
+  hpx::parallel::algorithms::parallel_introsort (A.begin() , A.end() );
 }
 
 template <typename IA>
@@ -26,11 +29,10 @@ int Prueba_hpx ( )
     //std::vector< std::vector<IA> > vec_list;
     //
     for (int i=0; i<200; ++i) {
-        uint64_t N = 100000 + (rand() % (int)(200000 - 100000 + 1));
-        std::vector<IA> Z ;
-        Z.reserve (N);
+        uint64_t N = 10000000 + (rand() % (int)(200000 - 100000 + 1));
+        std::vector<IA> Z(N, 0) ;
         std::generate(Z.begin(), Z.end(), std::rand);
-        std::cout << N << " elements of size " << sizeof (IA) << " randomly filled \n";
+//        std::cout << N << " elements of size " << sizeof (IA) << " randomly filled \n";
         hpx::async( &my_sort<IA>, std::move(Z));
     }
     return hpx::finalize();
