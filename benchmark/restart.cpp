@@ -28,13 +28,13 @@ int Prueba_hpx ( )
 {
     //std::vector< std::vector<IA> > vec_list;
     //
-    for (int i=0; i<200; ++i) {
-        uint64_t N = 10000000 + (rand() % (int)(200000 - 100000 + 1));
+//    for (int i=0; i<200; ++i) {
+        uint64_t N = 25000000; // 10000000 + (rand() % (int)(200000 - 100000 + 1));
         std::vector<IA> Z(N, 0) ;
         std::generate(Z.begin(), Z.end(), std::rand);
 //        std::cout << N << " elements of size " << sizeof (IA) << " randomly filled \n";
         hpx::async( &my_sort<IA>, std::move(Z));
-    }
+//    }
     return hpx::finalize();
 }
 

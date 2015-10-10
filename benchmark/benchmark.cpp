@@ -85,10 +85,10 @@ int Prueba_spreadsort  ( const std::vector <IA> & B );
 // as we start stop the HPX runtime for each test.
 #ifdef SORT_HAS_HPX
 template <class IA>
-int Prueba_hpx ( const std::vector <IA> & B );
+int Prueba_hpx ( std::vector <IA> & B );
 
 template <class IA>
-int hpx_test(const std::vector<IA> &A, int argc, char ** argv)
+int hpx_test(std::vector<IA> &A, int argc, char ** argv)
 {
     int result = Prueba_hpx<IA>(A);
     return hpx::finalize();
@@ -122,9 +122,9 @@ int main (int argc, char *argv[] )
     //------------------------------------------------------------------------
     // Execution with different object format
     //------------------------------------------------------------------------
-//    Generator_sorted() ;
-//    Generator_uint64() ;
-//    Generator_string () ;
+    Generator_sorted() ;
+    Generator_uint64() ;
+    Generator_string () ;
     Generator< int_array<1> >   ( NELEM   );
     Generator< int_array<2> >   ( NELEM>>1);
     Generator< int_array<4> >   ( NELEM>>2);
@@ -201,11 +201,10 @@ void Generator (uint64_t N )
 #ifdef SORT_HAS_HPX
 
 template <class IA>
-int Prueba_hpx ( const std::vector <IA> & B )
+int Prueba_hpx ( std::vector <IA> & A )
 {
     double duracion ;
     time_point start, finish;
-    std::vector <IA> A ( B);
 
     cout<<"HPX parallel introsort       : ";
     start= now() ;
@@ -225,8 +224,8 @@ int Prueba  ( const std::vector <IA> & B )
 	time_point start, finish;
 	std::vector <IA> A ( B);
     std::less<IA>  comp ;
-/*
-	A = B ;
+
+    A = B ;
     cout<<"std::sort                    : ";
     start= now() ;
     std::sort (A.begin() , A.end()  );
@@ -309,7 +308,7 @@ int Prueba  ( const std::vector <IA> & B )
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
 #endif
-*/
+
 #ifdef SORT_HAS_HPX
     A = B ;
     using hpx::util::placeholders::_1;
