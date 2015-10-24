@@ -81,6 +81,22 @@ int Prueba  ( const std::vector <IA> & B);
 template <class IA>
 int Prueba_spreadsort  ( const std::vector <IA> & B );
 
+template <class IA>
+int verify(const std::vector <IA> &A) {
+    if (A.size()==0) return 1;
+    //
+    IA temp = *(A.begin());
+    for (typename std::vector<IA>::const_iterator it=A.begin(); it!=A.end(); ++it) {
+        if ((*it)<temp) return 0;
+        temp = (*it);
+    }
+    return 1;
+}
+#define VERIFY(A) \
+  if (!verify(A)) { \
+    std::cout << "Verify sort failed\n"; \
+  }
+
 // we need a callback for the HPX runtime to call for this benchmark
 // as we start stop the HPX runtime for each test.
 #ifdef SORT_HAS_HPX
@@ -209,6 +225,7 @@ int Prueba_hpx ( std::vector <IA> & A )
     cout<<"HPX parallel introsort       : ";
     start= now() ;
     hpx::parallel::algorithms::parallel_introsort (A.begin() , A.end() );
+    VERIFY(A);
     finish = now() ;
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
@@ -232,6 +249,7 @@ int Prueba  ( const std::vector <IA> & B )
     finish = now() ;
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
+    VERIFY(A);
 
     A = B ;
     cout<<"Boost introsort              : ";
@@ -240,6 +258,7 @@ int Prueba  ( const std::vector <IA> & B )
     finish = now() ;
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
+    VERIFY(A);
 
     A = B ;
     cout<<"std::stable_sort             : ";
@@ -248,6 +267,7 @@ int Prueba  ( const std::vector <IA> & B )
     finish = now() ;
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
+    VERIFY(A);
 
     A = B ;
     cout<<"Boost smart_merge_sort       : ";
@@ -256,6 +276,7 @@ int Prueba  ( const std::vector <IA> & B )
     finish = now() ;
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
+    VERIFY(A);
 
     A = B ;
     cout<<"Timsort                      : ";
@@ -264,6 +285,7 @@ int Prueba  ( const std::vector <IA> & B )
     finish = now() ;
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
+    VERIFY(A);
 
 #ifdef SORT_HAS_TBB
     A = B ;
@@ -273,6 +295,7 @@ int Prueba  ( const std::vector <IA> & B )
     finish = now() ;
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
+    VERIFY(A);
 #endif
 
     A = B ;
@@ -282,6 +305,7 @@ int Prueba  ( const std::vector <IA> & B )
     finish = now() ;
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
+    VERIFY(A);
 
     A = B ;
     cout<<"Boost parallel stable sort   : ";
@@ -290,6 +314,7 @@ int Prueba  ( const std::vector <IA> & B )
     finish = now() ;
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
+    VERIFY(A);
 
     A = B ;
     cout<<"Boost sample sort            : ";
@@ -298,6 +323,7 @@ int Prueba  ( const std::vector <IA> & B )
     finish = now() ;
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
+    VERIFY(A);
 
 #ifdef SORT_HAS_TBB
     A = B ;
@@ -307,6 +333,7 @@ int Prueba  ( const std::vector <IA> & B )
     finish = now() ;
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
+    VERIFY(A);
 #endif
 
 #ifdef SORT_HAS_HPX
