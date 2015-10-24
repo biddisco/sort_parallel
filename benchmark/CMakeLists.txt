@@ -24,6 +24,11 @@ if (SORT_HAS_HPX)
   set(BENCHMARK_LIBRARIES ${BENCHMARK_LIBRARIES} ${TBB_LIBRARIES})
 endif()
 
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  add_definitions(-DSORT_HAS_GCC_PARALLEL)
+  add_definitions(-D_GLIBCXX_USE_SCHED_YIELD)
+endif()
+
 #------------------------------------------------------------------------------
 # Benchmark
 #------------------------------------------------------------------------------
