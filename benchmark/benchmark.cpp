@@ -298,6 +298,17 @@ int Prueba  ( const std::vector <IA> & B )
     VERIFY(A);
 #endif
 
+#ifdef SORT_HAS_GCC_PARALLEL
+    A = B;
+    cout<<"GCC parallel sort            : ";
+    start= now() ;
+    __gnu_parallel::sort (A.begin() , A.end());
+    finish = now() ;
+    duracion = subtract_time(finish ,start) ;
+    cout<<duracion<<" secs\n";
+    VERIFY(A);
+#endif
+
     A = B ;
     cout<<"Boost parallel introsort     : ";
     start= now() ;
@@ -306,6 +317,17 @@ int Prueba  ( const std::vector <IA> & B )
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
     VERIFY(A);
+
+#ifdef SORT_HAS_GCC_PARALLEL
+    A = B ;
+    cout<<"GCC parallel stable sort     : ";
+    start= now() ;
+    __gnu_parallel::stable_sort (A.begin() , A.end()  );
+    finish = now() ;
+    duracion = subtract_time(finish ,start) ;
+    cout<<duracion<<" secs\n";
+    VERIFY(A);
+#endif
 
     A = B ;
     cout<<"Boost parallel stable sort   : ";
