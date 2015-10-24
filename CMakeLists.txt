@@ -50,7 +50,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 #------------------------------------------------------------------------------
 # TBB
 #------------------------------------------------------------------------------
-#find_package(TBB)
+find_package(TBB)
 if (TBB_FOUND)
   set(SORT_HAS_TBB 1)
 endif()
