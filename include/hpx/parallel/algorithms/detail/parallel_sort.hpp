@@ -47,8 +47,8 @@ template < class iter_t,
            typename compare = std::less <typename iter_value<iter_t>::type>  >
 struct parallel_sort_comp
 {   //------------------------- begin ----------------------
-    size_type MaxPerThread = 65536;
-    size_t Min_Parallel = 65536;
+    size_type MaxPerThread = 32768;
+    size_t Min_Parallel = 32768;
     compare comp;
 
     //-------------------------------------------------------------------------
@@ -86,7 +86,7 @@ struct parallel_sort_comp
         difference_type N = last - first;
         assert ( N >=0);
         uint32_t Level = (NBits (N)<<1)  ;
-
+std::cout << "level " << level << " nbits " << NBits << "\n";>
         if ( (size_t)N < Min_Parallel )
         {
             intro_sort_internal ( first, last, Level,comp) ;
