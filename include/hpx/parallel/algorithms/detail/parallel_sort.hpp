@@ -86,7 +86,6 @@ struct parallel_sort_comp
         difference_type N = last - first;
         assert ( N >=0);
         uint32_t Level = (NBits (N)<<1)  ;
-std::cout << "level " << level << " nbits " << NBits << "\n";>
         if ( (size_t)N < Min_Parallel )
         {
             intro_sort_internal ( first, last, Level,comp) ;
