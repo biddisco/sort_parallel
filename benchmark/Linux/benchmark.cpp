@@ -122,6 +122,7 @@ char **hpx_argv = NULL;
 template <class IA, class compare>
 int hpx_test(std::vector<IA> &A, int argc, char ** argv)
 {
+    cout << "array has " << A.size() << " elements" << endl;
     return Prueba_hpx<IA, compare>(A, std::less<IA>());
 }
 #endif
@@ -199,6 +200,8 @@ int Prueba  ( std::vector <IA> & B , compare comp )
     A = B ;
     using hpx::util::placeholders::_1;
     using hpx::util::placeholders::_2;
+
+    cout << "array has " << A.size() << " elements" << endl;
     hpx::util::function_nonser<int(int, char**)> callback = hpx::util::bind(&hpx_test<IA, std::less<IA>>, A, _1, _2);
     hpx::init(callback, "dummyname", hpx_argc, hpx_argv, hpx::runtime_mode_default );
 #endif
@@ -331,11 +334,14 @@ int main (int argc, char *argv[] )
 template <class IA, class compare  >
 int Prueba_hpx ( const std::vector <IA> & B , compare comp )
 {
+    cout << "array has " << B.size() << " elements" << endl;
+
     double duracion ;
     time_point start, finish;
     std::vector <IA> A;
 
     A = B ;
+    VERIFY(A);
     //cout<<"---------------- HPX2 sort (seq) --------------\n";
     cout<<"HPX2 sort (seq)              : ";
     start = now() ;
@@ -356,6 +362,7 @@ int Prueba_hpx ( const std::vector <IA> & B , compare comp )
     VERIFY(A);
 */
     A = B ;
+    VERIFY(A);
     //---------------------  HPX2 sort (par) -------------------
     cout<<"HPX2 sort (par)              : ";
     start = now() ;
@@ -376,6 +383,7 @@ int Prueba_hpx ( const std::vector <IA> & B , compare comp )
     VERIFY(A);
 */
     A = B ;
+    VERIFY(A);
     //cout<<"---------------- HPX sort (seq) --------------\n";
     cout<<"HPX sort (seq)               : ";
     start = now() ;
@@ -386,6 +394,7 @@ int Prueba_hpx ( const std::vector <IA> & B , compare comp )
     VERIFY(A);
 
     A = B ;
+    VERIFY(A);
     //cout<<"---------------- HPX sort (par) --------------\n";
     cout<<"HPX sort (par)               : ";
     start = now() ;
