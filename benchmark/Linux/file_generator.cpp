@@ -21,7 +21,7 @@
 
 using std::cout ;
 using std::endl;
-namespace hpx_util = hpx::parallel::sort::detail::util ;
+namespace hpx_util = sort::detail::util ;
 
 
 void print_banner() ;

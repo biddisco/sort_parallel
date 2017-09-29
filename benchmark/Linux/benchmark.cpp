@@ -19,8 +19,8 @@
 //-----------------------------------------------------------------------------
 
 #ifdef SORT_HAS_HPX
+# include <hpx/hpx_init.hpp>
 # include <hpx/parallel/algorithms/sort.hpp>
-# include <hpx/parallel/sort/sort.hpp>
 #endif
 
 #ifdef SORT_HAS_GCC_PARALLEL
@@ -57,8 +57,8 @@
 #define NELEM 100000000
 #define NMAXSTRING 10000000
 using namespace std ;
-namespace hpx_util  = hpx::parallel::sort::detail::util ;
-namespace hpx_sort  = hpx::parallel::sort ;
+namespace hpx_util  = sort::detail::util ;
+namespace hpx_sort  = hpx::parallel;
 
 using hpx_util::time_point ;
 using hpx_util::now;
@@ -130,9 +130,9 @@ int hpx_test(std::vector<IA> &A, int argc, char ** argv)
 template <class IA, class compare  >
 int Prueba  ( std::vector <IA> & B , compare comp )
 {   //---------------------------- begin --------------------------------
-	double duracion ;
-	time_point start, finish;
-	std::vector <IA> A ( B);
+    double duracion ;
+    time_point start, finish;
+    std::vector <IA> A ( B);
 
     A = B ;
     cout<<"std::sort                    : ";
@@ -318,7 +318,7 @@ int main (int argc, char *argv[] )
     Generator< int_array<16> >  ( NELEM>>4);
     Generator< int_array<32> >  ( NELEM>>5);
     Generator< int_array<64> >  ( NELEM>>6);
-*/    
+*/
     return code ;
 }
 
@@ -334,7 +334,7 @@ int Prueba_hpx ( const std::vector <IA> & B , compare comp )
     double duracion ;
     time_point start, finish;
     std::vector <IA> A;
- 
+
     A = B ;
     //cout<<"---------------- HPX2 sort (seq) --------------\n";
     cout<<"HPX2 sort (seq)              : ";
@@ -344,7 +344,7 @@ int Prueba_hpx ( const std::vector <IA> & B , compare comp )
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
     VERIFY(A);
-
+/*
     A = B ;
     //cout<<"--------------------- HPX2 stable sort (seq) ---------------\n";
     cout<<"HPX2 stable_sort (seq)       : ";
@@ -354,7 +354,7 @@ int Prueba_hpx ( const std::vector <IA> & B , compare comp )
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
     VERIFY(A);
-
+*/
     A = B ;
     //---------------------  HPX2 sort (par) -------------------
     cout<<"HPX2 sort (par)              : ";
@@ -364,7 +364,7 @@ int Prueba_hpx ( const std::vector <IA> & B , compare comp )
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
     VERIFY(A);
-
+/*
     A = B ;
     //cout<<"--------------------- HPX2 stable sort (par) ---------------\n";
     cout<<"HPX2 stable_sort (par)       : ";
@@ -374,7 +374,7 @@ int Prueba_hpx ( const std::vector <IA> & B , compare comp )
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
     VERIFY(A);
-
+*/
     A = B ;
     //cout<<"---------------- HPX sort (seq) --------------\n";
     cout<<"HPX sort (seq)               : ";
@@ -384,7 +384,7 @@ int Prueba_hpx ( const std::vector <IA> & B , compare comp )
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
     VERIFY(A);
-    
+
     A = B ;
     //cout<<"---------------- HPX sort (par) --------------\n";
     cout<<"HPX sort (par)               : ";
@@ -394,7 +394,7 @@ int Prueba_hpx ( const std::vector <IA> & B , compare comp )
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
     VERIFY(A);
-
+/*
     A = B ;
     //--------------------- HPX2 sample_sort (par) ---------------------
     cout<<"HPX2 sample sort (par)       : ";
@@ -404,7 +404,7 @@ int Prueba_hpx ( const std::vector <IA> & B , compare comp )
     duracion = subtract_time(finish ,start) ;
     cout<<duracion<<" secs\n";
     VERIFY(A);
-
+*/
 /*
     A = B ;
     //--------------------- HPX2 sample_sort (seq) ---------------------

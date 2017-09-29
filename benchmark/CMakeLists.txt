@@ -7,7 +7,7 @@ add_executable(
   Linux/file_generator.cpp
 )
 
-include_directories(${PROJECT_SOURCE_DIR}/src/hpx//parallel/sort/tools)
+# include_directories(${PROJECT_SOURCE_DIR}/src/hpx/parallel/sort/tools)
 #------------------------------------------------------------------------------
 # includes and options for the benchmark
 #------------------------------------------------------------------------------
@@ -20,7 +20,7 @@ if (SORT_HAS_TBB)
 endif()
 
 if (SORT_HAS_HPX)
-  include_directories(${HPX_INCLUDE_DIRS})
+#  include_directories(${HPX_INCLUDE_DIRS})
   add_definitions(-DSORT_HAS_HPX)
   set(BENCHMARK_LIBRARIES ${BENCHMARK_LIBRARIES} ${HPX_LIBRARIES})
 endif()

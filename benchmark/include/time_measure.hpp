@@ -16,8 +16,6 @@
 
 #include <chrono>
 
-namespace hpx		{
-namespace parallel	{    
 namespace sort		{
 namespace detail	{
 namespace util		{
@@ -56,7 +54,5 @@ double subtract_time  ( const time_point & t1 , const time_point &t2)
 };//    End namespace util
 };//    End namespace detail
 };//    End namespace sort
-};//    End namespace parallel
-};//    End namespace hpx
 //***************************************************************************
 #endif

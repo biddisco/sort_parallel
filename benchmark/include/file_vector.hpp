@@ -26,8 +26,6 @@
 #include <random>
 #include <cstdint>
 
-namespace hpx		{
-namespace parallel	{    
 namespace sort		{
 namespace detail	{
 namespace util		{
@@ -245,8 +243,6 @@ struct uint64_file_generator
 }; // end namespace util
 }; // end namespace detail
 }; // end namespace sort
-}; // end namespace parallel
-}; // end namespace hpx
 //****************************************************************************
 //
 #endif
